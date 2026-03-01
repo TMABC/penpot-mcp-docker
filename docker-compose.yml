@@ -9,7 +9,7 @@ services:
     container_name: penpot-mcp-server
     restart: unless-stopped
     ports:
-      - "5000:5000"
+      - "5001:5000"
     environment:
       - PENPOT_API_URL=${PENPOT_API_URL:-https://design.penpot.app/api}
       - PENPOT_USERNAME=${PENPOT_USERNAME}
