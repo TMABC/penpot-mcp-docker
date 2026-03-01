@@ -5,7 +5,7 @@ FROM python:3.12-slim
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     POETRY_VERSION=1.8.3 \
-    UV_VERSION=0.4.4
+    UV_VERSION=0.10.0
 
 # Set work directory
 WORKDIR /app
@@ -20,7 +20,10 @@ RUN apt-get update && apt-get install -y \
 # Install uv (modern Python package installer)
 RUN pip install uv==$UV_VERSION
 
-# Copy project files
+# Clone the actual penpot-mcp source code
+RUN git clone https://github.com/montevive/penpot-mcp.git .
+
+# Copy local project overrides
 COPY . .
 
 # Install Python dependencies using uv
